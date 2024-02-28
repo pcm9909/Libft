@@ -7,6 +7,9 @@ size_t ft_strlcat(char *dst, const char *src, size_t size)
     size_t dst_len;
     size_t src_len;
 
+    if (!dst || !src)
+        return (0);
+
     i = 0;
     j = 0;
     dst_len = ft_strlen(dst);
@@ -16,11 +19,7 @@ size_t ft_strlcat(char *dst, const char *src, size_t size)
     while (dst[i])
         i++;
     while (src[j] && i < size - 1)
-    {
-        dst[i] = src[j];
-        i++;
-        j++;
-    }
+        dst[i++] = src[j++];
     if (i < size)
         dst[i] = '\0';
     return (dst_len + src_len); // 복사를 성공했음
